@@ -31,6 +31,8 @@ async function send(){
 
     let response = await createProduct(product);
     if(response.statusCode === 200){
+        let buttonExitQueryMode = document.getElementById("exit");
+        buttonExitQueryMode.click();
         snackbar('green', response.message);
     }else {
         snackbar('red', response.message)

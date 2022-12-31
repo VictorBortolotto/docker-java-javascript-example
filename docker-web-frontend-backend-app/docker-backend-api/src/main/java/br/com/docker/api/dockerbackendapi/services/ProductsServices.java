@@ -39,7 +39,7 @@ public class ProductsServices {
         Product product = productsRepository.findProductById(id);
         ProductResponses response = null;
         if(product == null){
-            response = new ProductResponses(404, "Product, not found!");
+            response = new ProductResponses(404, "Product not found!");
         }else {
             response = new ProductResponses(200, "Product retrieved with success!", product);
         }
@@ -98,11 +98,11 @@ public class ProductsServices {
         }).orElse(ResponseEntity.notFound().build());
     }
 
-    public ResponseEntity<?> deleteProduct(long id){
+    public ProductResponses deleteProduct(long id){
         return productsRepository.findById(id).map(record -> {
             productsRepository.deleteById(id);
-            return ResponseEntity.ok().build();
-        }).orElse(ResponseEntity.notFound().build());
+            return new ProductResponses(200, "Product deleted with success!");
+        }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
     public ResponseEntity<Product> updateProduct(long id, Product product){

@@ -16,6 +16,12 @@
                 <h1 class="title">PRODUCT</h1>
             </header>
             <aside class="aside">
+                <div class="exit-query-mode">
+                    <button id="exit" onclick="exit()" hidden>
+                        <i class="bi bi-box-arrow-left"></i>
+                        EXIT SEARCH
+                    </button>
+                </div>
                 <div class="form">
                     <div class="id-name">
                         <div style="width: 10%;">
@@ -68,7 +74,7 @@
                     <i class="bi bi-send-fill"></i>
                     SEND
                 </button>
-                <button id="delete">
+                <button id="delete" onclick="onClickDeleteProduct()" hidden>
                     <i class="bi bi-trash-fill" ></i>
                     DELETE
                 </button>
@@ -83,6 +89,7 @@
         </div>
     </div>
     <script src="/js/send.js"></script>
+    <script src="/js/delete.js"></script>
     <script src="/js/snackbar.js"></script>
     <script src="/js/services.js"></script>
     <script src="/js/search.js"></script>

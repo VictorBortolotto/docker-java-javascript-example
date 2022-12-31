@@ -1,10 +1,10 @@
 var queryMode = false;
 
 async function search(){
-    let buttonSearch = document.getElementById("search");
     let buttonSend = document.getElementById("send");
     let buttonDelete = document.getElementById("delete");
-    
+    let buttonExitQueryMode = document.getElementById("exit");
+
     let id = document.getElementById("id");
     let name = document.getElementById("name");
     let description = document.getElementById("description");
@@ -14,22 +14,53 @@ async function search(){
     let price = document.getElementById("price");
 
     if(!queryMode){
-        id.removeAttribute("readonly")      
+        id.removeAttribute("readonly")   
+        buttonDelete.setAttribute("hidden", true);   
+        buttonExitQueryMode.removeAttribute("hidden");
         cleanFields(id, name, price, description, color, length, scale);
         deactivateButtons(buttonDelete, buttonSend);
         deactivateFields(name, price, description, color, length, scale);
         queryMode = true;
     }else{
-        if(id.value !== '' || id.value !== null){
+        if(id.value !== '' && id.value !== null){
             let product = await findById(id.value);   
             if(product != null){
+                buttonDelete.removeAttribute("hidden")
                 setFieldsValues(id, name, price, description, color, length, scale, product); 
-                activateButtons(buttonDelete, buttonSearch);
+                activateButtons(buttonDelete, buttonSend);
                 activateFields(id, name, price, description, color, length, scale);
                 queryMode = false
             }
+        }else{
+            snackbar('blue', "Please, fill the id field before search.");
+            return;
         }
     }
+}
+
+function exit(){
+    let buttonDelete = document.getElementById("delete");
+    let buttonSend = document.getElementById("send");
+    let buttonExitQueryMode = document.getElementById("exit");
+
+    let id = document.getElementById("id");
+    let name = document.getElementById("name");
+    let description = document.getElementById("description");
+    let color = document.getElementById("color");
+    let length = document.getElementById("length");
+    let scale = document.getElementById("selection");
+    let price = document.getElementById("price");
+
+    exitQueryMode(id, name, price, description, color, length, scale, buttonDelete, buttonSend, buttonExitQueryMode);
+}
+
+function exitQueryMode(id, name, price, description, color, length, scale, buttonDelete, buttonSend, buttonExitQueryMode){
+    buttonDelete.setAttribute("hidden", true)
+    buttonExitQueryMode.setAttribute("hidden", true);
+    activateButtons(buttonDelete, buttonSend);
+    activateFields(id, name, price, description, color, length, scale);
+    cleanFields(id, name, price, description, color, length, scale);
+    queryMode = false
 }
 
 function  cleanFields(id, name, price, description, color, length, scale) {
