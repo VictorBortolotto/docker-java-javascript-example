@@ -4,6 +4,7 @@ async function search(){
     let buttonSend = document.getElementById("send");
     let buttonDelete = document.getElementById("delete");
     let buttonExitQueryMode = document.getElementById("exit");
+    let buttonSaveChanges = document.getElementById("update");
 
     let id = document.getElementById("id");
     let name = document.getElementById("name");
@@ -14,20 +15,17 @@ async function search(){
     let price = document.getElementById("price");
 
     if(!queryMode){
-        id.removeAttribute("readonly")   
-        buttonDelete.setAttribute("hidden", true);   
-        buttonExitQueryMode.removeAttribute("hidden");
+        id.removeAttribute("readonly");
+        configureButtonInQueryMode(buttonDelete, buttonSend, buttonExitQueryMode, buttonSaveChanges);
         cleanFields(id, name, price, description, color, length, scale);
-        deactivateButtons(buttonDelete, buttonSend);
         deactivateFields(name, price, description, color, length, scale);
         queryMode = true;
     }else{
         if(id.value !== '' && id.value !== null){
             let product = await findById(id.value);   
             if(product != null){
-                buttonDelete.removeAttribute("hidden")
-                setFieldsValues(id, name, price, description, color, length, scale, product); 
-                activateButtons(buttonDelete, buttonSend);
+                configureButtonOutQueryMode(buttonDelete, buttonSend, buttonSaveChanges)
+                setFieldsValues(id, name, price, description, color, length, scale, product);
                 activateFields(id, name, price, description, color, length, scale);
                 queryMode = false
             }
@@ -38,10 +36,24 @@ async function search(){
     }
 }
 
+function configureButtonOutQueryMode(buttonDelete, buttonSend, buttonSaveChanges){
+    buttonSend.setAttribute("hidden", true);
+    buttonDelete.removeAttribute("hidden");
+    buttonSaveChanges.removeAttribute("hidden");
+}
+
+function configureButtonInQueryMode(buttonDelete, buttonSend, buttonExitQueryMode, buttonSaveChanges){
+    buttonDelete.setAttribute("hidden", true);   
+    buttonExitQueryMode.removeAttribute("hidden");
+    buttonSend.setAttribute("hidden", true);
+    buttonSaveChanges.setAttribute("hidden", true)
+}
+
 function exit(){
     let buttonDelete = document.getElementById("delete");
     let buttonSend = document.getElementById("send");
     let buttonExitQueryMode = document.getElementById("exit");
+    let buttonSaveChanges = document.getElementById("update")
 
     let id = document.getElementById("id");
     let name = document.getElementById("name");
@@ -51,12 +63,14 @@ function exit(){
     let scale = document.getElementById("selection");
     let price = document.getElementById("price");
 
-    exitQueryMode(id, name, price, description, color, length, scale, buttonDelete, buttonSend, buttonExitQueryMode);
+    exitQueryMode(id, name, price, description, color, length, scale, buttonDelete, buttonSend, buttonExitQueryMode, buttonSaveChanges);
 }
 
-function exitQueryMode(id, name, price, description, color, length, scale, buttonDelete, buttonSend, buttonExitQueryMode){
+function exitQueryMode(id, name, price, description, color, length, scale, buttonDelete, buttonSend, buttonExitQueryMode, buttonSaveChanges){
     buttonDelete.setAttribute("hidden", true)
     buttonExitQueryMode.setAttribute("hidden", true);
+    buttonSaveChanges.setAttribute("hidden", true);
+    buttonSend.removeAttribute("hidden");
     activateButtons(buttonDelete, buttonSend);
     activateFields(id, name, price, description, color, length, scale);
     cleanFields(id, name, price, description, color, length, scale);
