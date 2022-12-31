@@ -1,0 +1,1 @@
+create database docker_example_app;
