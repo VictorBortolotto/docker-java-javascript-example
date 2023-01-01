@@ -1,6 +1,6 @@
 var queryMode = false;
 
-async function search(){
+async function onClickSearch(){
     let buttonSend = document.getElementById("send");
     let buttonDelete = document.getElementById("delete");
     let buttonExitQueryMode = document.getElementById("exit");

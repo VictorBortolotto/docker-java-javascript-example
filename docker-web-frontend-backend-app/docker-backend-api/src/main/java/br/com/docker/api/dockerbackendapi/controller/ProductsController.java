@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.docker.api.dockerbackendapi.model.Product;
@@ -34,7 +35,7 @@ public class ProductsController {
     }
 
     @GetMapping(path = "/products")
-    public List<Product> findAllProducts(){
+    public ProductResponses findAllProducts(){
         return productsServices.findAllProducts();
     }
 
@@ -44,22 +45,36 @@ public class ProductsController {
     }
 
     @PatchMapping(path = "/product/name/{id}")
-    public ResponseEntity<Product> updateProductName(@PathVariable("id") long id, @RequestBody Product product){
+    public ProductResponses updateProductName(@PathVariable("id") long id, @RequestBody Product product){
         return productsServices.updateProductName(id, product.getProductName());
     }
 
     @PatchMapping(path = "/product/description/{id}")
-    public ResponseEntity<Product> updateProductDescription(@PathVariable("id") long id, @RequestBody Product product){
+    public ProductResponses updateProductDescription(@PathVariable("id") long id, @RequestBody Product product){
         return productsServices.updateProductDescription(id, product.getProductDescription());
     }
 
     @PatchMapping(path = "/product/price/{id}")
-    public ResponseEntity<Product> updateProductPrice(@PathVariable("id") long id, @RequestBody Product product){
+    public ProductResponses updateProductPrice(@PathVariable("id") long id, @RequestBody Product product){
         return productsServices.updateProductPrice(id, product.getPrice());
     }
 
+    @PatchMapping(path = "/product/color/{id}")
+    public ProductResponses updateProductColor(@PathVariable("id") long id, @RequestBody Product product){
+        return productsServices.updateProductColor(id, product.getColor());
+    }
+
+    @PatchMapping(path = "/product/length/{id}")
+    public ProductResponses updateProductLength(@PathVariable("id") long id, @RequestBody Product product){
+        return productsServices.updateProductLength(id, product.getProductLength());
+    }
+
+    @PatchMapping(path = "/product/scale/{id}")
+    public ProductResponses updateProductScale(@PathVariable("id") long id, @RequestBody Product product){
+        return productsServices.updateProductScale(id, product.getProductScale());
+    }
     @PutMapping(path = "/product/update/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable("id") long id, @RequestBody Product product){
+    public ProductResponses updateProduct(@PathVariable("id") long id, @RequestBody Product product){
         return productsServices.updateProduct(id, product);
     }
 

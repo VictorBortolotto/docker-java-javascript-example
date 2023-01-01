@@ -46,56 +46,65 @@ public class ProductsServices {
         return response;
     }
 
-    public List<Product> findAllProducts(){
-        return productsRepository.findAll();
+    public ProductResponses findAllProducts(){
+        List<Product> productsList = productsRepository.findAll();
+        ProductResponses response = null;
+
+        if(productsList != null && !productsList.isEmpty()){
+            response = new ProductResponses(200, "Products retrivied with success!", productsList);
+        }else {
+            response = new ProductResponses(404, "There's no products to retrieve!");
+        }
+
+        return response;
     }
 
-    public ResponseEntity<Product> updateProductName(long id, String newName){
+    public ProductResponses updateProductName(long id, String newName){
         return productsRepository.findById(id).map(record -> {
             record.setProductName(newName);
             Product product = productsRepository.save(record);
-            return ResponseEntity.ok().body(product);
-        }).orElse(ResponseEntity.notFound().build());
+            return new ProductResponses(200, "Product updated with success!", product);
+        }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ResponseEntity<Product> updateProductDescription(long id, String newDescription){
+    public ProductResponses updateProductDescription(long id, String newDescription){
         return productsRepository.findById(id).map(record -> {
             record.setProductDescription(newDescription);
             Product product = productsRepository.save(record);
-            return ResponseEntity.ok().body(product);
-        }).orElse(ResponseEntity.notFound().build());
+            return new ProductResponses(200, "Product updated with success!", product);
+        }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ResponseEntity<Product> updateProductLength(long id, Double newLength){
+    public ProductResponses updateProductLength(long id, Double newLength){
         return productsRepository.findById(id).map(record -> {
             record.setPrice(newLength);
             Product product = productsRepository.save(record);
-            return ResponseEntity.ok().body(product);
-        }).orElse(ResponseEntity.notFound().build());
+            return new ProductResponses(200, "Product updated with success!", product);
+        }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ResponseEntity<Product> updateProductColor(long id, String newColor){
+    public ProductResponses updateProductColor(long id, String newColor){
         return productsRepository.findById(id).map(record -> {
             record.setColor(newColor);
             Product product = productsRepository.save(record);
-            return ResponseEntity.ok().body(product);
-        }).orElse(ResponseEntity.notFound().build());
+            return new ProductResponses(200, "Product updated with success!", product);
+        }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ResponseEntity<Product> updateProductPrice(long id, String newScale){
+    public ProductResponses updateProductScale(long id, String newScale){
         return productsRepository.findById(id).map(record -> {
             record.setProductScale(newScale);
             Product product = productsRepository.save(record);
-            return ResponseEntity.ok().body(product);
-        }).orElse(ResponseEntity.notFound().build());
+            return new ProductResponses(200, "Product updated with success!", product);
+        }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ResponseEntity<Product> updateProductPrice(long id, Double newPrice){
+    public ProductResponses updateProductPrice(long id, Double newPrice){
         return productsRepository.findById(id).map(record -> {
             record.setPrice(newPrice);
             Product product = productsRepository.save(record);
-            return ResponseEntity.ok().body(product);
-        }).orElse(ResponseEntity.notFound().build());
+            return new ProductResponses(200, "Product updated with success!", product);
+        }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
     public ProductResponses deleteProduct(long id){
@@ -105,7 +114,7 @@ public class ProductsServices {
         }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ResponseEntity<Product> updateProduct(long id, Product product){
+    public ProductResponses updateProduct(long id, Product product){
         return productsRepository.findById(id).map(record -> {
             record.setProductName(product.getProductName());
             record.setProductDescription(product.getProductDescription());
@@ -114,7 +123,7 @@ public class ProductsServices {
             record.setProductLength(product.getProductLength());
             record.setProductScale(product.getProductScale());
             Product updatedProduct = productsRepository.save(record);
-            return ResponseEntity.ok().body(updatedProduct);
-        }).orElse(ResponseEntity.notFound().build());
+            return new ProductResponses(200, "Product, updated with success!", updatedProduct);
+        }).orElse(new ProductResponses(404, "Product not found!"));
     }
 }   

@@ -70,11 +70,11 @@
                 </div>
             </aside>
             <footer class="footer">
-                <button id="update" hidden>
+                <button id="update" onclick="onClickUpdate()" hidden>
                     <i class="bi bi-box-arrow-down"></i>
                     SAVE CHANGES
                 </button>
-                <button id="send" onclick="send()">
+                <button id="send" onclick="onClickSend()">
                     <i class="bi bi-send-fill"></i>
                     SEND
                 </button>
@@ -82,7 +82,7 @@
                     <i class="bi bi-trash-fill" ></i>
                     DELETE
                 </button>
-                <button id="search" onclick="search()">
+                <button id="search" onclick="onClickSearch()">
                     <i class="bi bi-search"></i>
                     SEARCH
                 </button>
@@ -97,5 +97,6 @@
     <script src="/js/snackbar.js"></script>
     <script src="/js/services.js"></script>
     <script src="/js/search.js"></script>
+    <script src="/js/update.js"></script>
 </body>
 </html>

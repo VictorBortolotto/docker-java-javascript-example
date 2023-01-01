@@ -1,4 +1,4 @@
-async function send(){
+async function onClickSend(){
 
     const product = {
         productName: '',
