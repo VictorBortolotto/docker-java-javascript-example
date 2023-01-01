@@ -9,7 +9,7 @@ async function onClickUpdate(){
 
     let latestProduct = await findProductById(id.value);
 
-    let buttonExitQueyMode = document.getElementById("id");
+    let buttonExitQueyMode = document.getElementById("exit");
     let productOriginalPrice = latestProduct.product.price;
     let productOriginalName = latestProduct.product.productName;
     let productOriginalDescription = latestProduct.product.productDescription;
@@ -67,7 +67,7 @@ async function onClickUpdate(){
         response = await updateProductScale(id.value, product);
     }
 
-    if(response.statusCode === 200){
+    if(response.statusCode == 200){
         snackbar('green', response.message);
         buttonExitQueyMode.click();
     }else{
