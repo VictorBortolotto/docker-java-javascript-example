@@ -71,7 +71,6 @@ function exitQueryMode(id, name, price, description, color, length, scale, butto
     buttonExitQueryMode.setAttribute("hidden", true);
     buttonSaveChanges.setAttribute("hidden", true);
     buttonSend.removeAttribute("hidden");
-    activateButtons(buttonDelete, buttonSend);
     activateFields(id, name, price, description, color, length, scale);
     cleanFields(id, name, price, description, color, length, scale);
     queryMode = false
@@ -95,16 +94,6 @@ function activateFields(id, name, price, description, color, length, scale) {
     length.removeAttribute("readonly")
     scale.removeAttribute("readonly")
     price.removeAttribute("readonly")
-}
-
-function activateButtons(buttonDelete, buttonSend){
-    buttonDelete.removeAttribute('disabled');
-    buttonSend.removeAttribute('disabled');
-}
-
-function deactivateButtons(buttonDelete, buttonSend){
-    buttonDelete.setAttribute('disabled', ' ');
-    buttonSend.setAttribute('disabled', '');
 }
 
 function  deactivateFields(name, price, description, color, length, scale) {
