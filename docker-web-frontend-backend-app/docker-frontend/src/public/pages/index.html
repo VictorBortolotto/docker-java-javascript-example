@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/snackbar.css">
+    <link rel="stylesheet" href="/css/dialog.css">
     <title>Register</title>
 </head>
 <body>  
@@ -26,7 +27,7 @@
                     <div class="id-name">
                         <div style="width: 10%;">
                             <label for="id" class="label" aria-readonly="true">Id: </label>
-                            <input type="text" class="field" id="id" readonly>
+                            <input type="number" class="field" id="id" readonly>
                         </div>
                         <div style="display: flex; flex-direction: column; align-items: center; width: 50%;">
                             <div style="width: 100%;">
@@ -91,6 +92,41 @@
         <div id="snackbar">
 
         </div>
+        <dialog id="dialog">
+            <div class="dialog-content">
+                <div class="dialog-text">
+                    You didn't fill the id field, are you want retrieve all the products?
+                </div>
+                <div class="dialog-buttons">
+                    <button id="dialog-yes" onclick="onClickDialogButtonYes()">
+                        YES
+                    </button>
+                    <button id="dialog-no" onclick="onClickDialogButtonNo()">
+                        NO
+                    </button>
+                </div>
+            </div>
+        </dialog>
+        <dialog id="dialog-products">
+            <div class="dialog-products-content">
+                <div class="products-list-title">
+                        <div class="list-item-title" id="product-title-id">ID</div>
+                        <div class="list-item-title" id="product-title-name">NAME</div>
+                        <div class="list-item-title" id="product-title-description">DESCRIPTION</div>
+                        <div class="list-item-title" id="product-title-color">COLOR</div>
+                        <div class="list-item-title" id="product-title-length">LENGTH</div>
+                        <div class="list-item-title" id="product-title-scale">SCALE</div>
+                        <div class="list-item-title" id="product-title-price">PRICE</div>
+                </div>
+                <div class="dialog-list">
+                    <ul id="products-list">
+                    </ul>
+                </div>
+                <div class="dialog-products-footer">
+
+                </div>
+            </div>
+        </dialog>
     </div>
     <script src="/js/send.js"></script>
     <script src="/js/delete.js"></script>

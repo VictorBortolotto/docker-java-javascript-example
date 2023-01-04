@@ -42,6 +42,23 @@ async function findProductById(id){
 
 }
 
+async function findAllProduct(){
+    const headers = new Headers({
+        'Content-Type': 'application/json'
+    });
+
+    const request = { 
+        method: HTTP.get,
+        headers: headers,
+        mode: 'cors',
+        cache: 'default'
+    }
+
+    let response = await fetch(currentRoute + `/products`, request).then(response => response.json());
+    return response;
+
+}
+
 async function deleteProduct(id){
     const headers = new Headers({
         'Content-Type': 'application/json'
@@ -180,6 +197,7 @@ async function updateProductScale(id, product){
 module.exports = { 
     createProduct, 
     findProductById,
+    findAllProduct,
     updateProduct,
     deleteProduct,
     updateProductColor,

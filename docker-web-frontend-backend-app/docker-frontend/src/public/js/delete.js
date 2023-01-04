@@ -4,7 +4,6 @@ async function onClickDeleteProduct(){
 
     let response = await deleteProduct(id);
 
-    console.log(response);
     if(response.statusCode == 200){
         snackbar('green', response.message);
         buttonExitQueryMode.click();

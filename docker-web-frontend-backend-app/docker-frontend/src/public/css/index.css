@@ -143,9 +143,9 @@ body {
 
 #description {
     display: flex;
-    width: 58%;
+    width: 60%;
     max-lines: 5;
-    padding: 5px;
+    text-indent: 5px;
 }   
 
 .length-scale-color {
@@ -209,6 +209,12 @@ body {
     width: 30%;
     height: 40px;
     margin-left: 10px;
+}
+
+#price::-webkit-inner-spin-button,
+#length::-webkit-inner-spin-button,
+#id::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 #exit {
