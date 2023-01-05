@@ -54,21 +54,70 @@ async function onClickDialogButtonYes(){
 
         for(let i = 0; i < listProducts.productsList.length; i++){
             let product = listProducts.productsList[i];
-            html += `<li class="product-list-item" id="product-list-item">
-                            <div class="list-item" id="product-id">${product.id}</div>
-                            <div class="list-item" id="product-name">${product.productName}</div>
-                            <div class="list-item" id="product-description">${product.productDescription}</div>
-                            <div class="list-item" id="product-color">${product.color}</div>
-                            <div class="list-item" id="product-length">${product.productLength}</div>
-                            <div class="list-item" id="product-scale">${product.productScale}</div>
-                            <div class="list-item" id="product-price">${product.price}</div>
-                        </li>`;
+            html += createListElementInHtml(product, i);
         }
 
         ul.innerHTML = html;
+
+        for(let i = 0; i < listProducts.productsList.length; i++){
+            addCssToListElements(i);
+        }
     }else {
         return;
     }
+}
+
+function createListElementInHtml(product, listPosition){
+    let html = `<li class="product-list-item" id="product-list-item-${listPosition}">
+                    <div class="list-item" id="product-id-${listPosition}">${product.id}</div>
+                    <div class="list-item" id="product-name-${listPosition}">${product.productName}</div>
+                    <div class="list-item" id="product-description-${listPosition}">${product.productDescription}</div>
+                    <div class="list-item" id="product-color-${listPosition}">${product.color}</div>
+                    <div class="list-item" id="product-length-${listPosition}">${product.productLength}</div>
+                    <div class="list-item" id="product-scale-${listPosition}">${product.productScale}</div>
+                    <div class="list-item" id="product-price-${listPosition}">${product.price}</div>
+                </li>`;
+
+    return html;
+}
+
+function addCssToListElements(listPosition) {
+    let li = document.getElementById(`product-list-item-${listPosition}`);
+    li.style.display = 'flex';
+    li.style.flexDirection = 'row';
+    li.style.alignItems = 'center';
+    li.style.listStyle = 'none';
+    li.style.width = '100%';
+    li.style.height = '5%';
+    li.style.borderBottom = 'solid black 1px'
+
+    let productId = document.getElementById(`product-id-${listPosition}`);
+    productId.style.width = '10%';
+    productId.style.borderRight = 'solid black 1px';
+
+    let productName = document.getElementById(`product-name-${listPosition}`);
+    productName.style.width = '15%';
+    productName.style.borderRight = 'solid black 1px';
+
+    let productDescription = document.getElementById(`product-description-${listPosition}`);
+    productDescription.style.width = '40%';
+    productDescription.style.borderRight = 'solid black 1px';
+
+    let productColor = document.getElementById(`product-color-${listPosition}`);
+    productColor.style.width = '15%';
+    productColor.style.borderRight = 'solid black 1px';
+
+    let productLength = document.getElementById(`product-length-${listPosition}`);
+    productLength.style.width = '10%';
+    productLength.style.borderRight = 'solid black 1px';
+
+    let productScale = document.getElementById(`product-scale-${listPosition}`);
+    productScale.style.width = '10%';
+    productScale.style.borderRight = 'solid black 1px';
+    
+    let productPrice = document.getElementById(`product-price-${listPosition}`);
+    productPrice.style.width = '10%';
+
 }
 
 async function findAllProductsToList(){
