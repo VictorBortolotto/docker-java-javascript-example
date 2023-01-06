@@ -1,3 +1,4 @@
+var list = [];
 var queryMode = false;
 
 async function onClickSearch(){
@@ -50,38 +51,54 @@ async function onClickDialogButtonYes(){
     let pages = document.getElementById('pages');
 
     if(listProducts != null){
-        let ul = document.getElementById("products-list");
         let html = '';
 
         if(listProducts.productsList.length <= 20){
+
             for(let i = 0; i < listProducts.productsList.length; i++){
                 let products = listProducts.productsList[i];
                 html += createListElementInHtml(products, i);
             }
             pages.innerHTML = '<a class="page" id="page-0">1</a>';
-            addCssToPageNumbers(1);
-        }else{
-            let list = separeteProductsPerPages(listProducts.productsList);
 
-            for(let i = 0; i < list.length; i++){
-                if(list[i] === ''){
-                    list.length = list.length - 1;
-                }
+            addCssToPageNumbers(1);
+            addHtmlToUl(html);
+
+            for(let i = 0; i < listProducts.productsList.length; i++){
+                addCssToListElements(i);
             }
+        }else{
+            list = removeEmptyPages(separeteProductsPerPages(listProducts.productsList));
+
+            addHtmlToUl(list[0]);
+
+            for(let i = 0; i < 21; i++){
+                addCssToListElements(i);
+            } 
 
             let htmlPages = generatePagesNumbers(list);
             pages.innerHTML = htmlPages;
             addCssToPageNumbers(list.length);
         }
         
-        ul.innerHTML = html;
-
-        for(let i = 0; i < listProducts.productsList.length; i++){
-            addCssToListElements(i);
-        }
     }else {
         return;
     }
+}
+
+function addHtmlToUl(html){
+    let ul = document.getElementById("products-list");
+    ul.innerHTML = html;
+}
+
+function removeEmptyPages(listPages){
+    for(let i = 0; i < listPages.length; i++){
+        if(listPages[i] === ''){
+            listPages.length = listPages.length - 1;
+        }
+    }
+
+    return listPages;
 }
 
 async function findAllProductsToList(){
@@ -303,9 +320,9 @@ function generatePagesNumbers(listPages){
         if(listPages[i] !== ''){
             page = page + 1
             if(i == 0){
-                html += `<a class="page" id="page-${i}">${page}</a>`
+                html += `<a class="page" onclick="onClickPageButtons()" id="page-${i}">${page}</a>`
             }else {
-                html += `<a class="page" id="page-${i}">${page}</a>`
+                html += `<a class="page" onclick="onClickPageButtons()" id="page-${i}">${page}</a>`
             }
         }
     }
@@ -323,4 +340,23 @@ function addCssToPageNumbers(totalPages){
             a.style.marginRight = '5px';
         }
     }
+}
+
+function onClickPageButtons(){
+    let page = document.getElementById('pages');
+    let ul = document.getElementById("products-list");
+    page.addEventListener("click", event => {
+        let idButton = event.target.id;
+        let listButtonPosition = idButton.replace('page-', '');
+
+        let html = list[listButtonPosition];
+        ul.innerHTML = html;
+
+        let liId = ul.childNodes[0].id
+        let liPosition = liId.replace('product-list-item-', '')
+
+        for(let i = liPosition; i < (liPosition + 21); i++){
+            addCssToListElements(i);
+        } 
+    })
 }
