@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/snackbar.css">
     <link rel="stylesheet" href="/css/dialog.css">
+    <link rel="stylesheet" href="/css/pagination.css">
     <title>Register</title>
 </head>
 <body>  
@@ -119,11 +120,22 @@
                         <div class="list-item-title" id="product-title-price">PRICE</div>
                 </div>
                 <div class="dialog-list">
-                    <ul id="products-list">
+                    <ul id="products-list" >
                     </ul>
                 </div>
                 <div class="dialog-products-footer">
-
+                    <div class="pagination-footer">
+                        <div class="pagination">
+                            <button class="button-pagination" id="previous">
+                                <i class="bi bi-arrow-left"></i>
+                            </button>
+                            <div id="pages">
+                            </div>
+                            <button class="button-pagination" id="next">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </dialog>
