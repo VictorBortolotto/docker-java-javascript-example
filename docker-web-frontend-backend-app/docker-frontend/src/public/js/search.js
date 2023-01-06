@@ -1,5 +1,6 @@
 var list = [];
 var queryMode = false;
+var pagePosition = 0;
 
 async function onClickSearch(){
     let buttonSend = document.getElementById("send");
@@ -113,6 +114,50 @@ async function findAllProductsToList(){
     }
 
     return response;
+}
+
+function onClickButtonNext(){
+    let ul = document.getElementById("products-list");
+    pagePosition = pagePosition + 1;
+
+    if(pagePosition > (list.length - 1)){
+        pagePosition = list.length;
+        return;
+    }else{
+        let html = list[pagePosition]
+        ul.innerHTML = html;
+    
+        let liId = ul.childNodes[0].id
+        let liPosition = parseInt(liId.replace('product-list-item-', ''));
+    
+        let count = 0;
+        pagePosition == 0 ? count = liPosition + 21 : count = liPosition + 20;
+        for(let i = liPosition; i < (count); i++){
+            addCssToListElements(i);
+        } 
+    }    
+}
+
+function onClickButtonPrevious(){
+    let ul = document.getElementById("products-list");
+    pagePosition = pagePosition - 1;
+
+    if(pagePosition < 0){
+        pagePosition = 0
+        return;
+    }
+
+    let html = list[pagePosition]
+    ul.innerHTML = html;
+
+    let liId = ul.childNodes[0].id
+    let liPosition = parseInt(liId.replace('product-list-item-', ''));
+    
+    let count = 0;
+    pagePosition == 0 ? count = liPosition + 21 : count = liPosition + 20;
+    for(let i = liPosition; i < (count); i++){
+        addCssToListElements(i);
+    } 
 }
 
 function configureButtonOutQueryMode(buttonDelete, buttonSend, buttonSaveChanges){
@@ -347,15 +392,19 @@ function onClickPageButtons(){
     let ul = document.getElementById("products-list");
     page.addEventListener("click", event => {
         let idButton = event.target.id;
-        let listButtonPosition = idButton.replace('page-', '');
+        let listButtonPosition = parseInt(idButton.replace('page-', ''));
 
         let html = list[listButtonPosition];
         ul.innerHTML = html;
+        pagePosition = listButtonPosition;
 
-        let liId = ul.childNodes[0].id
-        let liPosition = liId.replace('product-list-item-', '')
+        let liId = ul.childNodes[0].id;
+        let liPosition = parseInt(liId.replace('product-list-item-', ''));
+        
+        let count = 0;
+        listButtonPosition == 0 ? count = liPosition + 21 : count = liPosition + 20;
 
-        for(let i = liPosition; i < (liPosition + 21); i++){
+        for(let i = liPosition; i < (count); i++){
             addCssToListElements(i);
         } 
     })
