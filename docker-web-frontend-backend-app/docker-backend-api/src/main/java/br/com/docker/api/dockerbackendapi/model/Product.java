@@ -16,10 +16,10 @@ public class Product {
     private long id;
 
     @Column(name = "name", length = 400, nullable = false)
-    private String productName;
+    private String name;
 
     @Column(name = "description", length = 400, nullable = false)
-    private String productDescription;
+    private String description;
 
     @Column(name = "price", nullable = false)
     private Double price;
@@ -28,22 +28,12 @@ public class Product {
     private String color;
 
     @Column(name = "length", nullable = true)
-    private double productLength;
+    private double length;
 
     @Column(name = "scale", length = 3, nullable = true)
-    private String productScale;
+    private String scale;
 
     public Product() {
-    }
-
-    public Product(String productName, String productDescription, Double price, String color, double productLength,
-            String productScale) {
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.price = price;
-        this.color = color;
-        this.productLength = productLength;
-        this.productScale = productScale;
     }
 
     public long getId() {
@@ -54,20 +44,20 @@ public class Product {
         this.id = id;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getProductDescription() {
-        return productDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getPrice() {
@@ -86,20 +76,29 @@ public class Product {
         this.color = color;
     }
 
-    public double getProductLength() {
-        return productLength;
+    public double getLength() {
+        return length;
     }
 
-    public void setProductLength(double productLength) {
-        this.productLength = productLength;
+    public void setLength(double length) {
+        this.length = length;
     }
 
-    public String getProductScale() {
-        return productScale;
+    public String getScale() {
+        return scale;
     }
 
-    public void setProductScale(String productScale) {
-        this.productScale = productScale;
+    public void setScale(String scale) {
+        this.scale = scale;
+    }
+
+    public Product(String name, String description, Double price, String color, double length, String scale) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.color = color;
+        this.length = length;
+        this.scale = scale;
     }
 
     @Override
@@ -107,14 +106,14 @@ public class Product {
         final int prime = 31;
         int result = 1;
         result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + ((productName == null) ? 0 : productName.hashCode());
-        result = prime * result + ((productDescription == null) ? 0 : productDescription.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((price == null) ? 0 : price.hashCode());
         result = prime * result + ((color == null) ? 0 : color.hashCode());
         long temp;
-        temp = Double.doubleToLongBits(productLength);
+        temp = Double.doubleToLongBits(length);
         result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + ((productScale == null) ? 0 : productScale.hashCode());
+        result = prime * result + ((scale == null) ? 0 : scale.hashCode());
         return result;
     }
 
@@ -129,15 +128,15 @@ public class Product {
         Product other = (Product) obj;
         if (id != other.id)
             return false;
-        if (productName == null) {
-            if (other.productName != null)
+        if (name == null) {
+            if (other.name != null)
                 return false;
-        } else if (!productName.equals(other.productName))
+        } else if (!name.equals(other.name))
             return false;
-        if (productDescription == null) {
-            if (other.productDescription != null)
+        if (description == null) {
+            if (other.description != null)
                 return false;
-        } else if (!productDescription.equals(other.productDescription))
+        } else if (!description.equals(other.description))
             return false;
         if (price == null) {
             if (other.price != null)
@@ -149,21 +148,20 @@ public class Product {
                 return false;
         } else if (!color.equals(other.color))
             return false;
-        if (Double.doubleToLongBits(productLength) != Double.doubleToLongBits(other.productLength))
+        if (Double.doubleToLongBits(length) != Double.doubleToLongBits(other.length))
             return false;
-        if (productScale == null) {
-            if (other.productScale != null)
+        if (scale == null) {
+            if (other.scale != null)
                 return false;
-        } else if (!productScale.equals(other.productScale))
+        } else if (!scale.equals(other.scale))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", productName=" + productName + ", productDescription=" + productDescription
-                + ", price=" + price + ", color=" + color + ", productLength=" + productLength + ", productScale="
-                + productScale + "]";
+        return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", color="
+                + color + ", length=" + length + ", scale=" + scale + "]";
     }
 
     

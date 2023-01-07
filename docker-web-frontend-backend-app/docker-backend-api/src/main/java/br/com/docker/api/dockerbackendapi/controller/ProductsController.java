@@ -42,32 +42,32 @@ public class ProductsController {
 
     @PatchMapping(path = "/product/name/{id}")
     public ProductResponses updateProductName(@PathVariable("id") long id, @RequestBody Product product){
-        return productsServices.updateProductName(id, product.getProductName());
+        return productsServices.updateName(id, product.getName());
     }
 
     @PatchMapping(path = "/product/description/{id}")
     public ProductResponses updateProductDescription(@PathVariable("id") long id, @RequestBody Product product){
-        return productsServices.updateProductDescription(id, product.getProductDescription());
+        return productsServices.updateDescription(id, product.getDescription());
     }
 
     @PatchMapping(path = "/product/price/{id}")
     public ProductResponses updateProductPrice(@PathVariable("id") long id, @RequestBody Product product){
-        return productsServices.updateProductPrice(id, product.getPrice());
+        return productsServices.updatePrice(id, product.getPrice());
     }
 
     @PatchMapping(path = "/product/color/{id}")
     public ProductResponses updateProductColor(@PathVariable("id") long id, @RequestBody Product product){
-        return productsServices.updateProductColor(id, product.getColor());
+        return productsServices.updateColor(id, product.getColor());
     }
 
     @PatchMapping(path = "/product/length/{id}")
     public ProductResponses updateProductLength(@PathVariable("id") long id, @RequestBody Product product){
-        return productsServices.updateProductLength(id, product.getProductLength());
+        return productsServices.updateLength(id, product.getLength());
     }
 
     @PatchMapping(path = "/product/scale/{id}")
     public ProductResponses updateProductScale(@PathVariable("id") long id, @RequestBody Product product){
-        return productsServices.updateProductScale(id, product.getProductScale());
+        return productsServices.updateScale(id, product.getScale());
     }
     @PutMapping(path = "/product/update/{id}")
     public ProductResponses updateProduct(@PathVariable("id") long id, @RequestBody Product product){

@@ -1,30 +1,30 @@
 async function onClickSend(){
 
     const product = {
-        productName: '',
-        productDescription: '',
+        name: '',
+        description: '',
         color: '',
-        productLength: 0.0,
-        productScale: '',
+        length: 0.0,
+        scale: '',
         price: 0.0
     }
 
-    product.productName = document.getElementById("name").value
-    product.productDescription = document.getElementById("description").value
+    product.name = document.getElementById("name").value
+    product.description = document.getElementById("description").value
     product.color = document.getElementById("color").value
-    product.productLength = document.getElementById("length").value
-    product.productScale = document.getElementById("selection").value
+    product.length = document.getElementById("length").value
+    product.scale = document.getElementById("selection").value
     product.price = document.getElementById("price").value
 
-    if((product.productName === '' || product.productName === null) || 
-        (product.productDescription === '' || product.productDescription === null) || 
+    if((product.name === '' || product.name === null) || 
+        (product.description === '' || product.description === null) || 
         (product.color === '' || product.color === null) || 
-        (product.productScale === '' || product.productScale === null)){
+        (product.scale === '' || product.scale === null)){
         snackbar('orange', 'Please, fill all the fields!');
         return;
     }
 
-    if((product.price === 0.0 || product.price === null) || (product.productLength === 0.0 || product.productLength === null)){
+    if((product.price === 0.0 || product.price === null) || (product.length === 0.0 || product.length === null)){
         snackbar('orange', 'Values in the fields price and length, cannot be zero!');
         return;
     }

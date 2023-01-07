@@ -58,23 +58,23 @@ public class ProductsServices {
         return response;
     }
 
-    public ProductResponses updateProductName(long id, String newName){
+    public ProductResponses updateName(long id, String newName){
         return productsRepository.findById(id).map(record -> {
-            record.setProductName(newName);
+            record.setName(newName);
             Product product = productsRepository.save(record);
             return new ProductResponses(200, "Product updated with success!", product);
         }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ProductResponses updateProductDescription(long id, String newDescription){
+    public ProductResponses updateDescription(long id, String newDescription){
         return productsRepository.findById(id).map(record -> {
-            record.setProductDescription(newDescription);
+            record.setDescription(newDescription);
             Product product = productsRepository.save(record);
             return new ProductResponses(200, "Product updated with success!", product);
         }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ProductResponses updateProductLength(long id, Double newLength){
+    public ProductResponses updateLength(long id, Double newLength){
         return productsRepository.findById(id).map(record -> {
             record.setPrice(newLength);
             Product product = productsRepository.save(record);
@@ -82,7 +82,7 @@ public class ProductsServices {
         }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ProductResponses updateProductColor(long id, String newColor){
+    public ProductResponses updateColor(long id, String newColor){
         return productsRepository.findById(id).map(record -> {
             record.setColor(newColor);
             Product product = productsRepository.save(record);
@@ -90,15 +90,15 @@ public class ProductsServices {
         }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ProductResponses updateProductScale(long id, String newScale){
+    public ProductResponses updateScale(long id, String newScale){
         return productsRepository.findById(id).map(record -> {
-            record.setProductScale(newScale);
+            record.setScale(newScale);
             Product product = productsRepository.save(record);
             return new ProductResponses(200, "Product updated with success!", product);
         }).orElse(new ProductResponses(404, "Product not found!"));
     }
 
-    public ProductResponses updateProductPrice(long id, Double newPrice){
+    public ProductResponses updatePrice(long id, Double newPrice){
         return productsRepository.findById(id).map(record -> {
             record.setPrice(newPrice);
             Product product = productsRepository.save(record);
@@ -115,12 +115,12 @@ public class ProductsServices {
 
     public ProductResponses updateProduct(long id, Product product){
         return productsRepository.findById(id).map(record -> {
-            record.setProductName(product.getProductName());
-            record.setProductDescription(product.getProductDescription());
+            record.setName(product.getName());
+            record.setDescription(product.getDescription());
             record.setPrice(product.getPrice());
             record.setColor(product.getColor());
-            record.setProductLength(product.getProductLength());
-            record.setProductScale(product.getProductScale());
+            record.setLength(product.getLength());
+            record.setScale(product.getScale());
             Product updatedProduct = productsRepository.save(record);
             return new ProductResponses(200, "Product, updated with success!", updatedProduct);
         }).orElse(new ProductResponses(404, "Product not found!"));

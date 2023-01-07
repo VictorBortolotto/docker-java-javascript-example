@@ -26,24 +26,24 @@ async function onClickUpdate(){
         price: 0.0
     }
 
-    product.productName = name.value;
-    product.productDescription = description.value;
+    product.name = name.value;
+    product.description = description.value;
     product.color = color.value;
-    product.productLength = length.value;
-    product.productScale = scale.value;
+    product.length = length.value;
+    product.scale = scale.value;
     product.price = price.value;
 
     let response = null;
     if((productOriginalPrice !== product.price) && 
-       (productOriginalName !== product.productName) && 
-       (productOriginalDescription !== product.productDescription) &&
+       (productOriginalName !== product.name) && 
+       (productOriginalDescription !== product.description) &&
        (productOriginalColor !== product.color) &&
-       (productOriginalLength !== product.productLength) &&
-       (productOriginalScale !== product.productScale)){
+       (productOriginalLength !== product.length) &&
+       (productOriginalScale !== product.scale)){
         response = await updateProduct(id.value, product);
     }
 
-    if(productOriginalName !== product.productName && response == null){
+    if(productOriginalName !== product.name && response == null){
         response = await updateProductName(id.value, product);
     }
 
@@ -51,7 +51,7 @@ async function onClickUpdate(){
         response = await updateProductPrice(id.value, product);
     }
 
-    if(productOriginalDescription !== product.productDescription  && response == null){
+    if(productOriginalDescription !== product.description  && response == null){
         response = await updateProductDescription(id.value, product);
     }
 
@@ -59,11 +59,11 @@ async function onClickUpdate(){
         response = await updateProductColor(id.value, product);
     }
 
-    if(productOriginalLength != product.productLength && response == null){
+    if(productOriginalLength != product.length && response == null){
         response = await updateProductLength(id.value, product);
     }
 
-    if(productOriginalScale !== product.productScale && response == null){
+    if(productOriginalScale !== product.scale && response == null){
         response = await updateProductScale(id.value, product);
     }
 
