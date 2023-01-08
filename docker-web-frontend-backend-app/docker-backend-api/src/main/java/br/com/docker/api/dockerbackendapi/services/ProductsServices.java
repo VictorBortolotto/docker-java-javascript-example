@@ -76,7 +76,7 @@ public class ProductsServices {
 
     public ProductResponses updateLength(long id, Double newLength){
         return productsRepository.findById(id).map(record -> {
-            record.setPrice(newLength);
+            record.setLength(newLength);
             Product product = productsRepository.save(record);
             return new ProductResponses(200, "Product updated with success!", product);
         }).orElse(new ProductResponses(404, "Product not found!"));
