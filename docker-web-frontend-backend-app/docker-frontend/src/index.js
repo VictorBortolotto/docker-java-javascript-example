@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 
 app.use(
-    express.static(__dirname + '\\public')
+    express.static(__dirname + '/public')
 )
 
 app.get('/docker', (req, res) => {
-    res.sendFile(__dirname + "\\public\\pages\\index.html");
+    res.sendFile(__dirname + "/public/pages/index.html");
 });
 
 app.listen(3000, () =>{
