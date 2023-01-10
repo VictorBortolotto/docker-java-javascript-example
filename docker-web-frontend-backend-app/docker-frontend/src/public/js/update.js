@@ -11,11 +11,11 @@ async function onClickUpdate(){
 
     let buttonExitQueyMode = document.getElementById("exit");
     let productOriginalPrice = latestProduct.product.price;
-    let productOriginalName = latestProduct.product.productName;
-    let productOriginalDescription = latestProduct.product.productDescription;
+    let productOriginalName = latestProduct.product.name;
+    let productOriginalDescription = latestProduct.product.description;
     let productOriginalColor = latestProduct.product.color;
-    let productOriginalLength = latestProduct.product.productLength;
-    let productOriginalScale = latestProduct.product.productScale;
+    let productOriginalLength = latestProduct.product.length;
+    let productOriginalScale = latestProduct.product.scale;
 
     const product = {
         productName: '',
