@@ -427,6 +427,9 @@ function configureButtonInQueryMode(buttonDelete, buttonSend, buttonExitQueryMod
 }
 
 function exit(){
+    let ul = document.getElementById("products-list");
+    ul.innerHTML = "";
+
     let buttonDelete = document.getElementById("delete");
     let buttonSend = document.getElementById("send");
     let buttonExitQueryMode = document.getElementById("exit");

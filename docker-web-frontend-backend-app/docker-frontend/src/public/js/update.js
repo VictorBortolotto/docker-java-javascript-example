@@ -43,27 +43,27 @@ async function onClickUpdate(){
         response = await updateProduct(id.value, product);
     }
 
-    if(productOriginalName !== product.name && response == null){
+    if(productOriginalName !== product.name){
         response = await updateProductName(id.value, product);
     }
 
-    if(productOriginalPrice != product.price && response == null){
+    if(productOriginalPrice != product.price){
         response = await updateProductPrice(id.value, product);
     }
 
-    if(productOriginalDescription !== product.description  && response == null){
+    if(productOriginalDescription !== product.description){
         response = await updateProductDescription(id.value, product);
     }
 
-    if(productOriginalColor !== product.color && response == null){
+    if(productOriginalColor !== product.color){
         response = await updateProductColor(id.value, product);
     }
 
-    if(productOriginalLength != product.length && response == null){
+    if(productOriginalLength != product.length){
         response = await updateProductLength(id.value, product);
     }
 
-    if(productOriginalScale !== product.scale && response == null){
+    if(productOriginalScale !== product.scale){
         response = await updateProductScale(id.value, product);
     }
 
