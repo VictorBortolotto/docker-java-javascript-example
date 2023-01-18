@@ -6,14 +6,14 @@
 <br></br>
 <hr></hr>
 
-<h2 align="center">LICENÇAS</h2>
+<h2 align="center" style="border: none">LICENÇAS</h2>
 
 [![License Badge](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/VictorBortolotto/docker-java-javascript-example/blob/master/LICENSE)
 
 <br></br>
 <hr></hr>
 
-<h2 align="center">
+<h2 align="center" style="border: none">
 TECNOLOGIAS UTILIZADAS
 </h2>
 
@@ -32,7 +32,7 @@ TECNOLOGIAS UTILIZADAS
 
 <br></br>
 
-<h2 align="center">
+<h2 align="center" style="border: none">
 COMANDOS ÚTEIS DOCKER
 </h2>
 
@@ -84,7 +84,7 @@ history
 
 <br></br>
 
-<h2 align="center">
+<h2 align="center" style="border: none">
 RODANDO DOCKER-EXAMPLE-APP
 </h2>
 
@@ -117,7 +117,7 @@ http://localhost:8080/docker
 
 <hr></hr>
 
-<h2 align="center">
+<h2 align="center" style="border: none">
 RODANDO DOCKER-WEB-FRONTEND-BACKEND-APP
 </h2>
 
@@ -160,7 +160,7 @@ select * from products;
 ```
 <br></br>
 
-<h2 align="left">
+<h2 align="left" style="border: none">
 RODANDO O BACKEND
 </h2>
 
@@ -186,7 +186,7 @@ mvn spring-boot:run
 
 <br></br>
 
-<h2 align="left">
+<h2 align="left" style="border: none">
 RODANDO A FRONTEND
 </h2>
 
@@ -213,7 +213,7 @@ http://localhost:3000/docker
 <hr></hr>
 
 </br> 
-<h2>Victor Augusto Campos Bortolotto</h2>
+<h2 style="border: none">Victor Augusto Campos Bortolotto</h2>
 <img style="width: 100px; height: 100px" src="https://avatars.githubusercontent.com/u/50971139?v=4" alt=""/>
 
 </br>
